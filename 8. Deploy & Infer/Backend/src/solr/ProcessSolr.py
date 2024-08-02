@@ -68,7 +68,7 @@ class ProcessSolr:
         question_encode = urllib.parse.quote(question)
         # Prepare solr query
         # http://150.239.171.68:8983/solr/superknowa/select?q=*:*&q.op=AND&wt=json&fq=!published_source:Redbooks
-        solr_requst_url = f'{Config.SOLR_BACKEND}?q={question_encode}&q.op=AND&wt=json&fq=!published_source:Redbooks'
+        solr_requst_url = f'{Config.SOLR_BACKEND}?q={question_encode}&q.op=AND&df=content&wt=json&fq=published_source:Medium'
         info_collect["solr_request"] = solr_requst_url
         print(solr_requst_url)
         # Make solr requests

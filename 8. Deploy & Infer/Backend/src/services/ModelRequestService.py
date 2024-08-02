@@ -8,7 +8,7 @@ from src.config.Config import Config
 import time
 from src.solr.ProcessSolr import ProcessSolr
 from src.services.ModelConfig import ModelConfig
-from src.elastic.ProcessElastic import ProcessElastic
+#from src.elastic.ProcessElastic import ProcessElastic
 from src.services.RetrieverService import RetrieverService
 import pandas as pd
 
@@ -121,6 +121,9 @@ class ModelRequestService:
             del model["prompt"]
             tic = time.perf_counter()
             response = requests.post(Config.MODEL_SERVICE_URL, headers=headers, json=model)
+            print(model)
+            print(response)
+
             toc = time.perf_counter()
             duration = toc - tic
             print(f"model '{model['model_id']}' loading time ==> {toc - tic:0.4f} seconds")
@@ -194,6 +197,9 @@ class ModelRequestService:
             tic = time.perf_counter()
         
             response = requests.post(Config.MODEL_SERVICE_URL, headers=headers, json=model)
+            print(model)
+            print(response.json())
+
             toc = time.perf_counter()
             duration = toc - tic
             print(f"model '{model['model_id']}' loading time ==> {toc - tic:0.4f} seconds")

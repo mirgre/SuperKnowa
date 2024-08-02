@@ -10,8 +10,8 @@ class MongoConnect:
         config = Config()
         client = MongoClient(
         f"mongodb://{config.MONGO_USER}:{config.mongo_pass}@{config.MONGO_URL}",
-        ssl=True,
-        tlsCAFile="cert/mongo.crt"
+        #ssl=True,
+        #tlsCAFile="cert/mongo.crt"
         )
         self.client = client        
     

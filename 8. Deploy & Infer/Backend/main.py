@@ -31,7 +31,7 @@ additional_feedback_collection = dbc.get_collection("additional_feedback")
 feedback_collection = dbc.get_collection("feedback")
 request_history_collection = dbc.get_request_history()
 request_history_context_collection = dbc.get_collection("request_history_context")
-authenticator = IAMAuthenticator(Config.WD_AUTH_KEY)
+#authenticator = IAMAuthenticator(Config.WD_AUTH_KEY)
 model_configurations = dbc.get_models()
 
 @app.route("/")

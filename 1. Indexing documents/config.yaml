@@ -1,5 +1,5 @@
 indexing:
-  elasticURL: # Please provide elastic path
+  elasticURL: locahost:8983
   elasticCertPath: # please provide certifacte path if requeires otherwise set false
   indexName: superknowa_test # here you can pass index name bydeafult it is 
   indexMapping: {

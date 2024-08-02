@@ -2,7 +2,7 @@ from src.config.Config import Config
 import time
 from src.solr.ProcessSolr import ProcessSolr
 from src.services.ModelConfig import ModelConfig
-from src.elastic.ProcessElastic import ProcessElastic
+#from src.elastic.ProcessElastic import ProcessElastic
 import pandas as pd
 
 class RetrieverService:
@@ -35,7 +35,9 @@ class RetrieverService:
             info['solr_result'] = results_list
     
         tic = time.perf_counter()
-        context, source_url = config.reranking(question=question, results_list=results_list, max_reranked_documents=10)
+        #context, source_url = config.reranking(question=question, results_list=results_list, max_reranked_documents=10)
+        print(results_list)
+        context, source_url = results_list[0]["document"]["text"], results_list[0]["document"]["url"]
         info['source_url'] = source_url
         toc = time.perf_counter()
         duration = toc - tic

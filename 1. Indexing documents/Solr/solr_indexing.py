@@ -43,8 +43,8 @@ def readdata_frompdf(file_name):
 
         pdfFileObj.close()
         return content
-    except:
-         print("file is empty")
+    except e:
+         print(e)
          return content
 
 ##  removing html tags from HTML files.
@@ -424,19 +424,20 @@ def downloadFile(url, fileName):
         file.write(response.content)
 
 
+DOC_FOLDER="/tmp/data/"
 
 # Directory containing the documents
-ibm_docs_dir = '/Scraper/scrape_data/ibm_docs/data-2/' 
-white_paper_docs_dir ='/Scraper/scrape_data/white_paper_metadata/data-2/'
-redbooks_data_dir ='/Scraper/scrape_data/redbooks_data/'
-ibm_cloud_docs_dir ='/ibm_cloud_docs_process_metdata_new/'
-ibm_cloud_metadta_file ='/ibm_cloud_docs_metadata5.txt'
-ibm_medium_blog ='/Scraper/scrape_data/Medium/text'
-ibm_medium_blog_csv ='/Scraper/scrape_data/Medium/csv'
+ibm_docs_dir = DOC_FOLDER+'/Scraper/scrape_data/ibm_docs/data-2/' 
+white_paper_docs_dir =DOC_FOLDER+'/Scraper/scrape_data/white_paper_metadata/data-2/'
+redbooks_data_dir =DOC_FOLDER+'/Scraper/scrape_data/redbooks_data/'
+ibm_cloud_docs_dir =DOC_FOLDER+'/ibm_cloud_docs_process_metdata_new/'
+ibm_cloud_metadta_file =DOC_FOLDER+'/ibm_cloud_docs_metadata5.txt'
+ibm_medium_blog =DOC_FOLDER+'/Scraper/scrape_data/Medium/text'
+ibm_medium_blog_csv =DOC_FOLDER+'/Scraper/scrape_data/Medium/csv'
 
 
 # Connect to Solr Please provide your solr url 
-solr = pysolr.Solr('XXXXX', always_commit=True,timeout=50) 
+solr = pysolr.Solr('http://localhost:8983/solr/superknowa', always_commit=True,timeout=50) 
 # Iterate over the files in the directory
 solrdocs =[]
 i = 0
@@ -479,6 +480,31 @@ for filename in os.listdir(ibm_medium_blog_csv):
                         "categories": ""+str(categories)+"",
                     })
 
+title="SuperKnowa- Simplest Framework Yet to Swiftly Build Enterprise RAG Solutions at Scale"
+sub_title="Releasing a framework to quickly build your prod-ready RAG (Retriever Augmented Generation) pipeline. A higher abstraction open framework that can glue RAG components like Lego pieces; to tailor retriever, re-ranker, Model Eval Kit, RLHF etc. for any GenAI applications."
+url="https://medium.com/towards-generative-ai/superknowa-simplest-framework-yet-to-swiftly-build-enterprise-rag-solutions-at-scale-ca90b49be28a"
+publish_date = today
+updated_date = today
+file_name="/home/ubuntu/dockercompose/SuperKnowa/1. Indexing documents/Solr/SuperKnowa.pdf"
+content=readdata_frompdf(file_name)
+indexing_date = today
+source = "Medium"
+categories=''
+
+print(type(content))
+
+solrdocs.append({
+                        "id": ""+title+"",
+                        "published_source": ""+source+"",
+                        "publish_date": ""+str(publish_date)+"",
+                        "last_update_date": ""+str(updated_date)+"",
+                        "indexing_date": ""+str(indexing_date)+"",
+                        "content": ""+content+"",
+                        "url": ""+url+"",
+                        "keywords": ""+str(sub_title)+"",
+                        "categories": ""+str(categories)+"",
+                    })
+print(f"Length of solrdocs: ${len(solrdocs)}")
 solr.add(solrdocs)
 print("indexed data scussefully")
 

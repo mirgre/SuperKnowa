@@ -17,7 +17,8 @@ class ModelConfig:
             prompt = f"{prompt} \
                         Context: {context} \
                         Question: {question}"
-            model["inputs"] = [prompt]
+            model["input"] = prompt
             model["prompt"] = prompt
             #del model["prompt"]
+            model["project_id"] = "3448824f-28e4-4256-92d1-0f50fe3cbdd1" 
         return models

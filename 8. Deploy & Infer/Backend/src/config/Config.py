@@ -74,6 +74,7 @@ class Config:
                 Config.RERANKER_URL, 
                 headers={'Content-Type': 'application/json'}, 
                 data= json.dumps({
+                    "reranker": {"reranker_id": "DPRReranker"},
                     "question": question,
                     "documents": results_list,
                     "max_num_documents": max_reranked_documents
