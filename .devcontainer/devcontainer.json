@@ -1,0 +1,30 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/ubuntu
+{
+	"name": "SuperKnowa-devcontainer",
+	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+	"build": {
+		"dockerfile": "../8. Deploy & Infer/Backend/dockerfile.devcontainer",
+		"context": "../8. Deploy & Infer/Backend"
+	},
+	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+	"remoteUser": "ubuntu",
+	"containerEnv": {
+		"MODEL_SERVICE_URL": "https://us-south.ml.cloud.ibm.com/ml/v1/text/generation?version=2023-05-29",
+		"MODEL_AUTH_TOKEN": "Bearer eyJraWQiOiIyMDI0MDcwNDA4NDAiLCJhbGciOiJSUzI1NiJ9.eyJpYW1faWQiOiJJQk1pZC02OTUwMDBCTEI5IiwiaWQiOiJJQk1pZC02OTUwMDBCTEI5IiwicmVhbG1pZCI6IklCTWlkIiwianRpIjoiZjYyNTNjOWUtNmI0OS00OGRiLWIyN2ItMmEyYjEwZWMyMWUzIiwiaWRlbnRpZmllciI6IjY5NTAwMEJMQjkiLCJnaXZlbl9uYW1lIjoiQW5nZWwiLCJmYW1pbHlfbmFtZSI6Ik51bmV6IE1lbmNpYXMiLCJuYW1lIjoiQW5nZWwgTnVuZXogTWVuY2lhcyIsImVtYWlsIjoiYW5nZWwubnVuZXpAcGhvZW5peC10ZWNobm9sb2dpZXMuY2giLCJzdWIiOiJhbmdlbC5udW5lekBwaG9lbml4LXRlY2hub2xvZ2llcy5jaCIsImF1dGhuIjp7InN1YiI6ImFuZ2VsLm51bmV6QHBob2VuaXgtdGVjaG5vbG9naWVzLmNoIiwiaWFtX2lkIjoiSUJNaWQtNjk1MDAwQkxCOSIsIm5hbWUiOiJBbmdlbCBOdW5leiBNZW5jaWFzIiwiZ2l2ZW5fbmFtZSI6IkFuZ2VsIiwiZmFtaWx5X25hbWUiOiJOdW5leiBNZW5jaWFzIiwiZW1haWwiOiJhbmdlbC5udW5lekBwaG9lbml4LXRlY2hub2xvZ2llcy5jaCJ9LCJhY2NvdW50Ijp7InZhbGlkIjp0cnVlLCJic3MiOiJlYTUyYmM1YzY5YTQ0ZDYzYTlhZmQ4NGY0ZmI5OWY5OCIsImltc191c2VyX2lkIjoiMTE4NjY2NTIiLCJmcm96ZW4iOnRydWUsImlzX2VudGVycHJpc2VfYWNjb3VudCI6ZmFsc2UsImVudGVycHJpc2VfaWQiOiJhNGIwMTNlY2FhNmE0NzcxYWQ2YjNmOTg3ZWQwOWQwYyIsImltcyI6IjI3OTA5NTYifSwiaWF0IjoxNzIyNTQ2Mzc3LCJleHAiOjE3MjI1NDk5NzcsImlzcyI6Imh0dHBzOi8vaWFtLmNsb3VkLmlibS5jb20vaWRlbnRpdHkiLCJncmFudF90eXBlIjoidXJuOmlibTpwYXJhbXM6b2F1dGg6Z3JhbnQtdHlwZTphcGlrZXkiLCJzY29wZSI6ImlibSBvcGVuaWQiLCJjbGllbnRfaWQiOiJkZWZhdWx0IiwiYWNyIjoxLCJhbXIiOlsicHdkIl19.H79_90ZIwil5VEqgQGXJzIFy2nvEY933ZFObkqhdod-SJqjtmqazJevjlJ9tcSPm9ze4dEQwLuXwQGl6dbBkVdP8-cMDpn6waqADsPyqQjXbDzG5mjeoH-3YTRDts44CCIhecceHM80apqChrqYcUrczJlH5RlobG1RcfjKu8QR4U0Nx2-_w2ctM9N4iouDDeVbbUe7IekZh1lBmWosk1L_ifZFlwOJoQV0VWtHM7ySouRLtfCMo6TMvb85saAbjVD0LzawyxYq-Bg_hxmMpTscXzuadnG8EOcDO3GgQ_MRZnrEoTclouH75t6JJBSmyxBCQDB78X3UBcl1Fw_Ia-g",
+		"SOLR_BACKEND": "http://solr:8983/solr/superknowa/select",
+		"RERANKER_URL": "http://primeqa:50052/RerankRequest",
+		"MONGO_URL": "mongo",
+		"MONGO_DB": "superknowa",
+		"MONGO_PASS": "example",
+		"MONGO_USER": "root"
+	},
+	"forwardPorts": [
+		3001,
+		3001
+	]
+	// "dockerComposeFile": "compose.yaml",
+	// "service": "superknowa",
+	// "workspaceFolder": "/app/backend",
+	// "shutdownAction": "stopCompose"
+}

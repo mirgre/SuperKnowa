@@ -1,0 +1,44 @@
+# FROM ubuntu:22.04
+
+# RUN apt-get update && apt-get install -y \
+#     python3.9. python3-pip git
+
+# COPY requirement.txt /tmp/requirement.txt
+# RUN pip3 install -r /tmp/requirement.txt
+
+# # WORKDIR /workspaces/SuperKnowa/8. Deploy & Infer
+
+# ARG USERNAME=ubuntu
+# ARG GROUPNAME=${USERNAME}
+# ARG USER_UID=1000
+# ARG USER_GID=${USER_UID}
+
+# RUN addgroup -gid $USER_GID ${GROUPNAME} \
+#     && adduser --uid ${USER_UID} --gid ${USER_GID} ${USERNAME}
+
+
+
+FROM registry.access.redhat.com/ubi8/python-39:1-113.1682304667 
+
+COPY requirement.txt requirement.txt
+RUN pip3 install -r requirement.txt
+
+
+USER root
+RUN yum install -y sudo
+
+ARG USERNAME=ubuntu
+ARG GROUPNAME=${USERNAME}
+ARG USER_UID=1000
+ARG USER_GID=${USER_UID}
+
+RUN sudo groupadd -g $USER_GID ${GROUPNAME} \
+    && sudo useradd -u ${USER_UID} -g ${USER_GID} ${USERNAME}
+
+RUN mkdir -p /app/backend
+
+RUN mkdir -p /opt/app-root/src/.vscode-server && chmod +777 /opt/app-root/src/.vscode-server
+
+
+
+
