@@ -20,8 +20,13 @@
 		"MONGO_USER": "root"
 	},
 	"forwardPorts": [
-		3001,
 		3001
+	],
+	// "appPort": [
+	// 	3001
+	// ],
+	"runArgs": [
+		"--network=host"
 	]
 	// "dockerComposeFile": "compose.yaml",
 	// "service": "superknowa",
