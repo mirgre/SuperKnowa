@@ -1,0 +1,54 @@
+{
+    "models": [
+        {
+            "model_id": "google/ul2",
+            "prompt": "Answer the question based on the context below.",
+            "inputs": [],
+            "parameters": {
+                "temperature": 0.3,
+                "min_new_tokens": 10,
+                "max_new_tokens": 200
+            }
+        },
+        {
+            "model_id": "google/flan-ul2",
+            "prompt": "Answer the question based on the context below.",
+            "inputs": [],
+            "parameters": {
+                "temperature": 0.3,
+                "min_new_tokens": 10,
+                "max_new_tokens": 150
+            }
+        },
+        {
+            "model_id": "google/flan-t5-xxl",
+            "inputs": [],
+            "prompt": "Answer the question based on the context below.",
+            "parameters": {
+                "temperature": 0.3,
+                "min_new_tokens": 10,
+                "max_new_tokens": 150
+            }
+        },
+        {
+            "model_id": "tiiuae/falcon-40b",
+            "prompt": "Answer the question based on the context below.",
+            "inputs": [],
+            "parameters": {
+                "temperature": 0.3,
+                "min_new_tokens": 10,
+                "max_new_tokens": 150
+            }
+        },
+        {
+            "model_id": "google/flan-t5-xl",
+            "prompt": "Answer the question based on the context below.",
+            "inputs": [],
+            "parameters": {
+                "temperature": 0.3,
+                "min_new_tokens": 10,
+                "max_new_tokens": 150
+            }
+        }
+    ]
+}
